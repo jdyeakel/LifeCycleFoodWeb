@@ -1,6 +1,8 @@
 # LifeCycleFoodWeb
 
 From Williams et al. 2000:
+Williams, R. J., & Martinez, N. D. (2000). Simple rules yield complex food webs. Nature, 404(6774), 180–183. doi:10.1038/35004572
+
 
 Each of S species (for example, S = 6, each shown as an inverted triangle) is assigned a `niche value' parameter (ni) drawn uniformly from
 the interval [0,1]. Species i consumes all species falling in a range (ri) that is placed by uniformly drawing the centre of the range (ci) from [ri/2, ni]. This permits looping and
