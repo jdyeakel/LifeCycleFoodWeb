@@ -43,7 +43,6 @@ while (disconnected == TRUE) {
     max_width <- c+(r/2)
     min_width <- c-(r/2)
     
-    
     #Which species fall within this range?
     #For each species that does, draw link in adjacency matrix
     num_prey[i] <- 0
@@ -54,7 +53,6 @@ while (disconnected == TRUE) {
         num_prey[i] <- num_prey[i] + 1
       }
     }
-    
     
   }
   
@@ -76,16 +74,20 @@ while (disconnected == TRUE) {
   } else {
     disconnected <- FALSE
   }
-  
-  
+    
 }
+
+
 
 #Build graph object
 g <- graph.adjacency(adj_m, mode = "directed")
 #plot(g,layout=layout.reingold.tilford(g,root=basal_pos,flip.y=FALSE),vertex.size=5)
 
+#Calculate trophic levels for each node
+trophic <- sapply(1:N,function(x){shortest.paths(g,v = basal_pos, to = x)})
+
 #Assign node coordinates; y-axis is the niche value (trophic level increases across y-axis)
-coords <- cbind(runif(N),nv)
-plot(g,layout=coords,vertex.size=5,edge.arrow.size=0.4,main=ecount(g)/N^2,vertex.label=NA)
+coords <- cbind(runif(N),trophic)
+plot(g,layout=coords,vertex.size=5,edge.arrow.size=0.4,main=ecount(g)/N^2) #,vertex.label=NA
 
 
