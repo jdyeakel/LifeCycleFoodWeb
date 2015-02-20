@@ -87,7 +87,7 @@ g <- graph.adjacency(adj_m, mode = "directed")
 trophic <- sapply(1:N,function(x){shortest.paths(g,v = basal_pos, to = x)})
 
 #Assign node coordinates; y-axis is the niche value (trophic level increases across y-axis)
-coords <- cbind(runif(N),trophic)
-plot(g,layout=coords,vertex.size=5,edge.arrow.size=0.4,main=ecount(g)/N^2) #,vertex.label=NA
+coords <- cbind(runif(N),trophic); coords[basal_pos,] <- c(0.5,trophic[basal_pos])
+plot(g,layout=coords,vertex.size=5,edge.arrow.size=0.4,main=ecount(g)/N^2,vertex.label=NA) #
 
 
